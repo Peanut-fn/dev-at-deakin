@@ -1,13 +1,20 @@
-/* Basic styling to center the forms */
+/* Global Styles */
 body {
   background-color: #f4f4f4;
   font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  margin: 0;
 }
 
+/* This container now just provides a main content area */
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Aligns to top, not center */
+  padding-top: 3rem; /* Add space below the navbar */
+  min-height: calc(100vh - 75px); /* Full height minus navbar */
+}
+
+/* Authentication form styles (Login/Register/Home) */
 .auth-container {
   background-color: #ffffff;
   padding: 2rem;

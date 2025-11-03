@@ -3,11 +3,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
 import HomePage from './HomePage';
-import './App.css'; // We will create this for styling
+import Navbar from './Navbar'; // <-- Import the new Navbar
+import './App.css'; 
 
 function App() {
   return (
     <BrowserRouter>
+      {/* Navbar is outside the Routes, so it stays on every page */}
+      <Navbar /> 
+      
       <div className="app-container">
         <Routes>
           <Route path="/" element={<LoginPage />} />

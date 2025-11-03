@@ -1,34 +1,25 @@
 import React from 'react';
-import { auth } from './firebase'; // <-- Import auth
-import { signOut } from 'firebase/auth'; // <-- Import the signOut function
-import { useNavigate } from 'react-router-dom'; // <-- Import useNavigate to redirect
+import { auth } from './firebase'; // We just need auth to get the user's email
 
 function HomePage() {
-  const navigate = useNavigate();
-
-  // Create the sign-out function
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth); // Sign the user out
-      navigate('/'); // Redirect to the login page
-    } catch (err) {
-      console.error("Error signing out: ", err);
-    }
-  };
+  const user = auth.currentUser; // Get the currently logged-in user
 
   return (
+    // We can re-use the 'auth-container' style for a nice card effect
     <div className="auth-container">
-      <h1>Welcome!</h1>
-      <p>You have successfully logged in.</p>
+      <h1>Dashboard</h1>
+      <p style={{ textAlign: 'center', fontSize: '1.1rem' }}>
+        Welcome back!
+      </p>
       
-      {/* Add the sign-out button */}
-      <button 
-        onClick={handleSignOut} 
-        className="auth-button" 
-        style={{backgroundColor: '#dc3545'}} // Optional: style it red
-      >
-        Sign Out
-      </button>
+      {/* We check if user exists before trying to show email */}
+      {user ? (
+        <p style={{ textAlign: 'center', color: '#555' }}>
+          You are logged in as: <br /> <strong>{user.email}</strong>
+        </p>
+      ) : (
+        <p>Loading user data...</p>
+      )}
     </div>
   );
 }

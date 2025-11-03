@@ -17,11 +17,11 @@ function LoginPage() {
       // 1. Sign in with Firebase Auth
       await signInWithEmailAndPassword(auth, email, password);
       
-      // 2. Redirect to home page on success 
+      // 2. Redirect to home page on success
       navigate('/home');
 
     } catch (err) {
-      // 3. Show error message on failure 
+      // 3. Show error message on failure
       setError('Invalid email or password');
     }
   };
@@ -29,10 +29,11 @@ function LoginPage() {
   return (
     <div className="auth-container">
       <form onSubmit={handleLogin}>
-        <h1>DEV@Deakin</h1> {/* [cite: 37] */}
+        {/* --- THIS IS THE CHANGE --- */}
+        <h1>Welcome Back!</h1>
         
         <div className="form-group">
-          <label>Your email</label> {/* [cite: 42] */}
+          <label>Your email</label>
           <input
             type="email"
             value={email}
@@ -42,7 +43,7 @@ function LoginPage() {
         </div>
 
         <div className="form-group">
-          <label>Your password</label> {/* [cite: 44] */}
+          <label>Your password</label>
           <input
             type="password"
             value={password}
@@ -51,11 +52,11 @@ function LoginPage() {
           />
         </div>
 
-        {error && <p className="error-message">{error}</p>} {/*  */}
+        {error && <p className="error-message">{error}</p>}
         
-        <button type="submit" className="auth-button">Login</button> {/* [cite: 45] */}
+        <button type="submit" className="auth-button">Login</button>
         
-        <Link to="/register" className="auth-link">Sign up</Link> {/*  */}
+        <Link to="/register" className="auth-link">Sign up</Link>
       </form>
     </div>
   );
